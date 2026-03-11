@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalyst · Stories</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@200;300;400;600;700;800;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; background: #060608; overflow: hidden; font-family: 'Barlow', sans-serif; }
+
+.letterbox-top, .letterbox-bottom {
+  position: fixed; left: 0; right: 0; background: #000; z-index: 100; height: 52px;
+}
+.letterbox-top { top: 0; } .letterbox-bottom { bottom: 0; }
+
+#lightBleed {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  transition: background 1.4s ease;
+}
+.grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+#ghostName {
+  position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(120px, 20vw, 300px); letter-spacing: -6px; text-transform: uppercase;
+  white-space: nowrap; pointer-events: none; z-index: 2; user-select: none;
+  transition: opacity 0.6s ease;
+}
+
+header {
+  position: fixed; top: 0; left: 0; right: 0; height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 44px; z-index: 110;
+}
+.brand {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.brand b { color: rgba(255,255,255,0.75); }
+.header-right { display: flex; align-items: center; gap: 20px; }
+.story-num {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 13px;
+  letter-spacing: 3px; color: rgba(255,255,255,0.25);
+}
+.story-num b { color: rgba(255,255,255,0.55); font-weight: 600; }
+.prog-track { width: 80px; height: 1px; background: rgba(255,255,255,0.1); }
+.prog-fill { height: 1px; background: rgba(255,255,255,0.55); width: 0%; }
+
+.stage {
+  position: fixed; inset: 0; display: flex;
+  align-items: center; justify-content: center; z-index: 10;
+}
+
+.act {
+  position: absolute; inset: 52px;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 10vw; opacity: 0; pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+.act.visible { opacity: 1; pointer-events: auto; }
+
+.act-label {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 300;
+  font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); margin-bottom: 32px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.5s 0.15s ease, transform 0.5s 0.15s ease;
+}
+.act.visible .act-label { opacity: 1; transform: none; }
+
+/* ACT I */
+.pain-line {
+  font-family: 'Libre Baskerville', serif; font-weight: 400; font-style: italic;
+  font-size: clamp(26px, 4vw, 56px); line-height: 1.25;
+  color: rgba(255,255,255,0.8); max-width: 800px;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.8s 0.3s ease, transform 0.8s 0.3s ease;
+}
+.act.visible .pain-line { opacity: 1; transform: none; }
+.pain-line .em { color: #fff; font-weight: 700; font-style: normal; }
+
+.company-tag {
+  margin-top: 44px; display: flex; align-items: center; gap: 16px;
+  opacity: 0; transition: opacity 0.6s 0.9s ease;
+}
+.act.visible .company-tag { opacity: 1; }
+.tag-line { width: 32px; height: 1px; }
+.tag-name {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+  font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+}
+.tag-industry {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 300;
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-top: 4px;
+}
+
+/* ACT II */
+.act-number { align-items: flex-start; }
+.big-number {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+  font-size: clamp(80px, 17vw, 210px); line-height: 0.85;
+  letter-spacing: -4px; text-transform: uppercase;
+  opacity: 0; transform: translateY(30px) scale(0.96);
+  transition: opacity 0.6s 0.2s ease, transform 0.6s 0.2s ease;
+}
+.act.visible .big-number { opacity: 1; transform: none; }
+.number-context {
+  font-family: 'Libre Baskerville', serif; font-size: clamp(16px, 2vw, 26px);
+  line-height: 1.5; color: rgba(255,255,255,0.45); max-width: 540px;
+  margin-top: 28px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.6s 0.7s ease, transform 0.6s 0.7s ease;
+}
+.act.visible .number-context { opacity: 1; transform: none; }
+.number-context b { color: rgba(255,255,255,0.85); font-weight: 400; }
+
+/* ACT III */
+.act-voice { padding: 0 8vw; }
+.open-quote {
+  font-family: 'Libre Baskerville', serif; font-size: 96px; line-height: 0.5;
+  opacity: 0; transition: opacity 0.5s 0.1s ease; margin-bottom: 8px;
+}
+.act.visible .open-quote { opacity: 1; }
+.voice-quote {
+  font-family: 'Libre Baskerville', serif; font-weight: 400; font-style: italic;
+  font-size: clamp(22px, 3.2vw, 44px); line-height: 1.32; color: #fff;
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.8s 0.3s ease, transform 0.8s 0.3s ease;
+}
+.act.visible .voice-quote { opacity: 1; transform: none; }
+.voice-quote .hl { font-style: normal; font-weight: 700; }
+.voice-person {
+  margin-top: 40px; opacity: 0; transition: opacity 0.5s 1.1s ease;
+}
+.act.visible .voice-person { opacity: 1; }
+.person-name {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 600;
+  font-size: 15px; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+.person-role {
+  font-family: 'Barlow', sans-serif; font-weight: 300; font-size: 13px;
+  color: rgba(255,255,255,0.28); margin-top: 5px;
+}
+.components-row {
+  margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px;
+  opacity: 0; transition: opacity 0.5s 1.4s ease;
+}
+.act.visible .components-row { opacity: 1; }
+.comp-chip {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 400;
+  font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.04);
+}
+
+.convo-question {
+  position: fixed; bottom: 52px; left: 0; right: 0;
+  padding: 16px 10vw; display: flex; align-items: center; gap: 18px;
+  border-top: 1px solid rgba(255,255,255,0.06); z-index: 20;
+  opacity: 0; transition: opacity 0.6s 1.4s ease; pointer-events: none;
+}
+.convo-question.visible { opacity: 1; }
+.convo-icon { font-size: 13px; opacity: 0.4; flex-shrink: 0; }
+.convo-text {
+  font-family: 'Barlow', sans-serif; font-weight: 300; font-size: 13px;
+  color: rgba(255,255,255,0.35); line-height: 1.5;
+}
+
+.footer-dots {
+  position: fixed; bottom: 52px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; align-items: center; z-index: 110; height: 52px;
+}
+.f-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); cursor: pointer; transition: all 0.3s ease;
+}
+.f-dot.active { background: rgba(255,255,255,0.65); width: 20px; border-radius: 2px; }
+
+.act-dots {
+  position: fixed; right: 44px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 8px; z-index: 20;
+}
+.a-dot {
+  width: 3px; height: 3px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); transition: all 0.4s ease;
+}
+.a-dot.done { background: rgba(255,255,255,0.38); }
+.a-dot.active { background: #fff; height: 14px; border-radius: 2px; }
+
+#curtain {
+  position: fixed; inset: 0; z-index: 200; background: #000;
+  opacity: 0; pointer-events: none; transition: opacity 0.28s ease;
+}
+#curtain.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="letterbox-top"></div>
+<div class="letterbox-bottom"></div>
+<div id="lightBleed"></div>
+<div class="grain"></div>
+<div id="ghostName"></div>
+<div id="curtain"></div>
+
+<header>
+  <div class="brand"><b>Catalyst</b> · Customer Stories</div>
+  <div class="header-right">
+    <div class="story-num"><b id="sNum">1</b> / 10</div>
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+  </div>
+</header>
+
+<div class="stage" id="stage"></div>
+
+<div class="convo-question" id="convoQ">
+  <div class="convo-icon">◈</div>
+  <div class="convo-text" id="convoText"></div>
+</div>
+
+<div class="act-dots" id="actDots">
+  <div class="a-dot active" id="ad0"></div>
+  <div class="a-dot" id="ad1"></div>
+  <div class="a-dot" id="ad2"></div>
+</div>
+
+<div class="footer-dots" id="footerDots"></div>
+
+<script>
+const S = [
+  {
+    company:"Swiggy", industry:"Food Tech", color:"#e05c5c",
+    components:["QuickML","APIs"],
+    a1:{ pain:"Workforce data existed, but ML Ops was a major challenge when deploying predictive models.", tag:"Swiggy · Food Tech" },
+    a2:{ number:"QuickML", context:"QuickML enabled rapid No Code model deployment." },
+    a3:{ quote:"QuickML with its API capabilities helped us deploy the model overnight and use production data for interventions.", name:"Daksh Sahni", role:"People Analytics & Behavioural Sciences, Swiggy", convo:"" }
+  },
+  {
+    company:"Saint-Gobain", industry:"Supply Chain", color:"#4a9edd",
+    components:["Serverless Functions","Event Triggers","APIs"],
+    a1:{ pain:"ERP and operational data existed across independent systems.", tag:"Saint-Gobain · Supply Chain" },
+    a2:{ number:"1 Week → 1 Day", context:"Event-driven integrations connected systems and improved supply chain visibility." },
+    a3:{ quote:"We developed the integration in a week and deployed it in a day.", name:"Amanda Tighe", role:"Project Manager, Saint-Gobain", convo:"" }
+  },
+  {
+    company:"Livpure", industry:"E-Commerce", color:"#5cbf9e",
+    components:["Serverless Functions","APIs","Data Store"],
+    a1:{ pain:"Inventory, logistics, and order data were fragmented.", tag:"Livpure · E-Commerce" },
+    a2:{ number:"Seconds", context:"Systems were integrated to provide delivery estimates on the website within seconds." },
+    a3:{ quote:"Estimated delivery dates are displayed on the webpage within seconds.", name:"Livpure Team", role:"Livpure", convo:"" }
+  },
+  {
+    company:"Deloitte", industry:"Enterprise", color:"#a78bfa",
+    components:["Serverless Functions","APIs","Environments"],
+    a1:{ pain:"Infrastructure setup slowed enterprise development.", tag:"Deloitte · Enterprise" },
+    a2:{ number:"Simplified", context:"Serverless platform simplified deployment and environment management." },
+    a3:{ quote:"Separate environments and one-click deployment made shipping apps far easier.", name:"Amit N Kumar", role:"Director – Data Science & ML, Deloitte", convo:"" }
+  },
+  {
+    company:"BuildHR", industry:"HR Technology", color:"#fcd34d",
+    components:["Serverless Functions","Data Store","Authentication"],
+    a1:{ pain:"Enterprise HR systems required secure and scalable infrastructure.", tag:"BuildHR · HR Technology" },
+    a2:{ number:"Scalable", context:"Catalyst enabled scalable workforce management platform development." },
+    a3:{ quote:"Catalyst has been a holistic and cost-effective platform for our development.", name:"Lakshmi Narayanan", role:"Executive Director, BuildHR", convo:"" }
+  },
+  {
+    company:"ConstructionBOS", industry:"Construction", color:"#fb923c",
+    components:["Serverless Functions","APIs","Microservices"],
+    a1:{ pain:"Project workflows and documents were scattered.", tag:"ConstructionBOS · Construction" },
+    a2:{ number:"Faster", context:"Catalyst enabled microservices for centralized project coordination." },
+    a3:{ quote:"We were able to get new services to customers faster with Catalyst.", name:"Craig Mulcahy", role:"CEO, ConstructionBOS", convo:"" }
+  },
+  {
+    company:"ProCreator", industry:"Digital Products", color:"#4ecdc4",
+    components:["Serverless Functions","APIs","Application Services"],
+    a1:{ pain:"Backend setup slowed product development cycles.", tag:"ProCreator · Digital Products" },
+    a2:{ number:"60–70%", context:"Catalyst simplified backend infrastructure for faster development." },
+    a3:{ quote:"Development time reduced by 60–70%, enabling faster delivery of dynamic pages.", name:"ProCreator Team", role:"ProCreator", convo:"" }
+  },
+  {
+    company:"Codafish", industry:"App Development", color:"#e8b96a",
+    components:["Serverless Functions","APIs"],
+    a1:{ pain:"Infrastructure management consumed engineering time.", tag:"Codafish · App Development" },
+    a2:{ number:"Zero overhead", context:"Serverless architecture simplified backend operations and scaling." },
+    a3:{ quote:"Catalyst enables developers to build and scale applications without worrying about servers.", name:"Timo Müller", role:"Executive Director, Codafish", convo:"" }
+  },
+  {
+    company:"Livasa Hospitals", industry:"Healthcare", color:"#f472b6",
+    components:["Serverless Functions","APIs","Authentication"],
+    a1:{ pain:"Hospital systems required secure integrations.", tag:"Livasa Hospitals · Healthcare" },
+    a2:{ number:"Seamless", context:"Catalyst enabled scalable and reliable healthcare application infrastructure." },
+    a3:{ quote:"Catalyst made interoperability seamless and reduced our go-to-market time.", name:"Dishant Gupta", role:"Group Head – IT, Livasa Hospitals", convo:"" }
+  },
+  {
+    company:"Dotsquares", industry:"Enterprise IT", color:"#63b3ed",
+    components:["Serverless Functions","APIs","Data Store"],
+    a1:{ pain:"Infrastructure provisioning slowed development timelines.", tag:"Dotsquares · Enterprise IT" },
+    a2:{ number:"Accelerated", context:"Catalyst accelerated development and deployment cycles." },
+    a3:{ quote:"Catalyst's flexibility helped turn a challenge into a growth opportunity.", name:"Rahul Gupta", role:"Lead Development Strategist, Dotsquares", convo:"" }
+  }
+];
+
+let si=0, ai=0, timer=null;
+const ACT_TIME=5200;
+
+// Build footer dots
+const fd=document.getElementById('footerDots');
+S.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='f-dot'+(i===0?' active':'');
+  d.id=`fd${i}`; d.onclick=()=>jumpStory(i);
+  fd.appendChild(d);
+});
+
+function setAtmos(s){
+  document.getElementById('lightBleed').style.background=
+    `radial-gradient(ellipse 65% 65% at 82% 50%, ${s.color}1a 0%, transparent 70%)`;
+  document.getElementById('ghostName').textContent=s.company.split(' ')[0].toUpperCase();
+  document.getElementById('ghostName').style.color=`${s.color}15`;
+  document.getElementById('sNum').textContent=si+1;
+}
+
+function showAct(storyIdx, actIdx){
+  const s=S[storyIdx];
+  document.getElementById('stage').innerHTML='';
+  document.getElementById('convoQ').classList.remove('visible');
+
+  for(let i=0;i<3;i++){
+    const d=document.getElementById(`ad${i}`);
+    d.className='a-dot'+(i<actIdx?' done':(i===actIdx?' active':''));
+  }
+
+  const el=document.createElement('div');
+
+  if(actIdx===0){
+    el.className='act act-pain';
+    el.innerHTML=`
+      <div class="act-label">The situation</div>
+      <div class="pain-line">${s.a1.pain}</div>
+      <div class="company-tag">
+        <div class="tag-line" style="background:${s.color}"></div>
+        <div>
+          <div class="tag-name" style="color:${s.color}">${s.a1.tag.split('·')[0].trim()}</div>
+          <div class="tag-industry">${s.a1.tag.split('·')[1]?.trim()||s.industry}</div>
+        </div>
+      </div>`;
+  } else if(actIdx===1){
+    el.className='act act-number';
+    el.innerHTML=`
+      <div class="act-label">What changed</div>
+      <div class="big-number" style="color:${s.color}">${s.a2.number}</div>
+      <div class="number-context">${s.a2.context}</div>`;
+  } else {
+    el.className='act act-voice';
+    const chips = s.components.map(c=>`<span class="comp-chip" style="border-color:${s.color}22;color:${s.color}88">${c}</span>`).join('');
+    el.innerHTML=`
+      <div class="open-quote" style="color:${s.color}">"</div>
+      <div class="voice-quote">${s.a3.quote}</div>
+      <div class="voice-person">
+        <div class="person-name" style="color:${s.color}">${s.a3.name}</div>
+        <div class="person-role">${s.a3.role}</div>
+      </div>
+      <div class="components-row">${chips}</div>`;
+    document.getElementById('convoText').textContent=s.a3.convo;
+    if(s.a3.convo) setTimeout(()=>document.getElementById('convoQ').classList.add('visible'),100);
+  }
+
+  document.getElementById('stage').appendChild(el);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('visible')));
+  si=storyIdx; ai=actIdx;
+  startTimer();
+}
+
+function startTimer(){
+  clearInterval(timer);
+  const fill=document.getElementById('progFill');
+  fill.style.width='0%';
+  const start=Date.now();
+  timer=setInterval(()=>{
+    const pct=Math.min(100,(Date.now()-start)/ACT_TIME*100);
+    fill.style.width=pct+'%';
+    if(pct>=100){clearInterval(timer);advance();}
+  },40);
+}
+
+function advance(){
+  if(ai<2) showAct(si,ai+1);
+  else jumpStory((si+1)%S.length);
+}
+
+function jumpStory(idx){
+  const c=document.getElementById('curtain');
+  c.classList.add('show');
+  clearInterval(timer);
+  setTimeout(()=>{
+    S.forEach((_,i)=>document.getElementById(`fd${i}`)?.classList.toggle('active',i===idx));
+    si=idx;
+    setAtmos(S[idx]);
+    showAct(idx,0);
+    c.classList.remove('show');
+  },280);
+}
+
+setAtmos(S[0]);
+showAct(0,0);
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){clearInterval(timer);advance();}
+  if(e.key==='ArrowLeft'){clearInterval(timer);jumpStory((si-1+S.length)%S.length);}
+});
+</script>
+</body>
+</html>
