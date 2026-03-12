@@ -6,65 +6,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalyst · Customer Stories</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@200;300;400;600;700;800;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
+*{margin:0;padding:0;box-sizing:border-box}
+
+html,body{
 width:100%;
 height:100%;
-background:#060608;
 overflow:hidden;
 font-family:'Barlow',sans-serif;
+
+/* BACKDROP IMAGE */
+background-image:url("backdrop.png"); /* replace with your exported backdrop image */
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
 }
 
-/* Cinematic bars */
+/* Dark overlay so text is readable */
+
+#overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.45);
+z-index:0;
+}
+
+/* Top & bottom cinematic bars */
 
 .letterbox-top,.letterbox-bottom{
 position:fixed;
 left:0;
 right:0;
-background:#000;
+height:70px;
+background:black;
 z-index:100;
-height:52px;
 }
 
 .letterbox-top{top:0}
 .letterbox-bottom{bottom:0}
 
-/* Background glow */
-
-#lightBleed{
-position:fixed;
-inset:0;
-z-index:0;
-pointer-events:none;
-transition:background 1.4s ease;
-}
-
-.grain{
-position:fixed;
-inset:0;
-z-index:1;
-pointer-events:none;
-opacity:0.4;
-}
-
-/* Huge company ghost text */
+/* Huge ghost company text */
 
 #ghostName{
 position:fixed;
-left:50%;
 top:50%;
+left:50%;
 transform:translate(-50%,-50%);
 font-family:'Barlow Condensed';
 font-weight:900;
-font-size:clamp(120px,20vw,300px);
+font-size:clamp(220px,22vw,420px);
 letter-spacing:-6px;
-opacity:.12;
-z-index:2;
-user-select:none;
+opacity:.07;
+color:white;
+pointer-events:none;
+z-index:1;
 }
 
 /* Header */
@@ -74,47 +72,40 @@ position:fixed;
 top:0;
 left:0;
 right:0;
-height:52px;
+height:70px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 44px;
+padding:0 50px;
 z-index:110;
 }
 
 .brand{
 font-family:'Barlow Condensed';
-font-size:13px;
-letter-spacing:5px;
+letter-spacing:6px;
+font-size:18px;
 text-transform:uppercase;
-color:rgba(255,255,255,.4);
-}
-
-.brand b{color:white}
-
-.header-right{
-display:flex;
-gap:20px;
-align-items:center;
+color:white;
 }
 
 .story-num{
 font-family:'Barlow Condensed';
-font-size:13px;
-letter-spacing:3px;
-color:rgba(255,255,255,.4);
+letter-spacing:4px;
+font-size:18px;
+color:white;
 }
 
 .prog-track{
-width:80px;
-height:1px;
-background:#333;
+width:160px;
+height:3px;
+background:#444;
+margin-left:20px;
 }
 
 .prog-fill{
-height:1px;
-background:white;
+height:3px;
 width:0%;
+background:white;
 }
 
 /* Stage */
@@ -128,175 +119,186 @@ justify-content:center;
 z-index:10;
 }
 
-/* Acts */
+/* Act container */
 
 .act{
 position:absolute;
-inset:52px;
+inset:100px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 padding:0 10vw;
 opacity:0;
-transition:opacity .7s ease;
+transition:opacity .6s ease;
 }
 
 .act.visible{opacity:1}
 
-/* Label */
+/* Section label */
 
 .act-label{
 font-family:'Barlow Condensed';
-font-size:11px;
-letter-spacing:5px;
+letter-spacing:6px;
+font-size:18px;
 text-transform:uppercase;
-color:rgba(255,255,255,.25);
-margin-bottom:30px;
+color:#ccc;
+margin-bottom:40px;
 }
 
-/* Act 1 */
+/* Challenge text */
 
 .pain-line{
 font-family:'Libre Baskerville';
 font-style:italic;
-font-size:clamp(26px,4vw,54px);
+font-size:clamp(60px,5vw,100px);
 line-height:1.25;
 color:white;
-max-width:800px;
+max-width:1500px;
 }
 
+/* Company tag */
+
 .company-tag{
-margin-top:40px;
+margin-top:50px;
 display:flex;
-gap:16px;
+gap:20px;
 align-items:center;
 }
 
 .tag-line{
-width:32px;
-height:1px;
+width:40px;
+height:2px;
 }
 
 .tag-name{
 font-family:'Barlow Condensed';
-letter-spacing:4px;
+letter-spacing:5px;
 text-transform:uppercase;
-font-size:14px;
+font-size:30px;
 }
 
 .tag-industry{
-font-size:12px;
-letter-spacing:3px;
-color:#888;
+font-size:22px;
+color:#aaa;
 }
 
-/* Act 2 */
+/* Big impact number */
 
 .big-number{
 font-family:'Barlow Condensed';
 font-weight:900;
-font-size:clamp(80px,17vw,210px);
+font-size:clamp(200px,22vw,420px);
 line-height:.9;
-letter-spacing:-4px;
+letter-spacing:-6px;
 }
+
+/* Impact context */
 
 .number-context{
 font-family:'Libre Baskerville';
-font-size:22px;
-margin-top:25px;
-max-width:540px;
-color:#ccc;
+font-size:clamp(36px,3vw,60px);
+margin-top:40px;
+max-width:1200px;
+color:#ddd;
 }
 
-/* Act 3 */
+/* Quote */
 
 .voice-quote{
 font-family:'Libre Baskerville';
 font-style:italic;
-font-size:clamp(22px,3vw,42px);
+font-size:clamp(46px,4vw,90px);
 line-height:1.35;
 color:white;
-max-width:900px;
+max-width:1500px;
 }
 
+/* Person */
+
 .voice-person{
-margin-top:35px;
+margin-top:50px;
 }
 
 .person-name{
 font-family:'Barlow Condensed';
-letter-spacing:3px;
+letter-spacing:4px;
+font-size:34px;
 text-transform:uppercase;
-font-size:15px;
 }
 
 .person-role{
-font-size:13px;
-color:#888;
-margin-top:4px;
+font-size:24px;
+color:#aaa;
+margin-top:6px;
 }
 
+/* Component chips */
+
 .components-row{
-margin-top:30px;
+margin-top:40px;
 display:flex;
-gap:8px;
+gap:14px;
 flex-wrap:wrap;
 }
 
 .comp-chip{
 font-family:'Barlow Condensed';
-font-size:11px;
-letter-spacing:2px;
-text-transform:uppercase;
-padding:5px 10px;
-border:1px solid #444;
-border-radius:2px;
-color:#aaa;
+font-size:24px;
+letter-spacing:3px;
+padding:10px 18px;
+border:1px solid #666;
+border-radius:4px;
+color:#ddd;
 }
 
-/* Footer dots */
+/* Footer navigation dots */
 
 .footer-dots{
 position:fixed;
-bottom:52px;
+bottom:70px;
 left:50%;
 transform:translateX(-50%);
 display:flex;
-gap:8px;
+gap:10px;
 z-index:110;
 }
 
 .f-dot{
-width:4px;
-height:4px;
+width:6px;
+height:6px;
 border-radius:50%;
-background:#444;
+background:#666;
 cursor:pointer;
 transition:.3s;
 }
 
 .f-dot.active{
+width:24px;
+border-radius:4px;
 background:white;
-width:20px;
-border-radius:2px;
 }
+
 </style>
 </head>
 
 <body>
 
+<div id="overlay"></div>
+
 <div class="letterbox-top"></div>
 <div class="letterbox-bottom"></div>
-<div id="lightBleed"></div>
+
 <div id="ghostName"></div>
 
 <header>
+
 <div class="brand"><b>Catalyst</b> · Customer Stories</div>
 
-<div class="header-right">
+<div style="display:flex;align-items:center">
 <div class="story-num"><b id="sNum">1</b> / 9</div>
 <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
 </div>
+
 </header>
 
 <div class="stage" id="stage"></div>
@@ -304,31 +306,17 @@ border-radius:2px;
 
 <script>
 
-const ACT_TIME=5200;
+const ACT_TIME=5200
 
 const S=[
-
 {
 company:"Swiggy",
 industry:"Food Tech",
 color:"#e05c5c",
 components:["QuickML","APIs"],
-
-a1:{
-pain:"Attrition was rising with no early-warning system to see it coming. MLOps made deploying sentiment models slow and painfully complex.",
-tag:"Swiggy · Food Tech"
-},
-
-a2:{
-number:"Overnight",
-context:"Swiggy built an 'unhappy employee' prediction model overnight with no-code ML deployment and fed live production data back into interventions."
-},
-
-a3:{
-quote:"QuickML, with its API capabilities, helped us deploy the model overnight and use production data for interventions.",
-name:"Daksh Sahni",
-role:"People Analytics & Behavioural Sciences, Swiggy"
-}
+a1:{pain:"Attrition was rising with no early-warning system to see it coming. MLOps made deploying sentiment models slow and painfully complex."},
+a2:{number:"Overnight",context:"Swiggy built an unhappy employee prediction model overnight using no-code ML deployment."},
+a3:{quote:"QuickML, with its API capabilities, helped us deploy the model overnight and use production data for interventions.",name:"Daksh Sahni",role:"People Analytics & Behavioural Sciences"}
 },
 
 {
@@ -336,22 +324,9 @@ company:"Saint-Gobain",
 industry:"Supply Chain",
 color:"#4a9edd",
 components:["Serverless Functions","Event Triggers","APIs"],
-
-a1:{
-pain:"Siloed ERP and supply chain systems created blind spots impacting business and customer trust.",
-tag:"Saint-Gobain · Supply Chain"
-},
-
-a2:{
-number:"1 Week → 1 Day",
-context:"Saint-Gobain built serverless supply chain integration in a week and deployed automated ERP–supply chain workflows for 200+ users."
-},
-
-a3:{
-quote:"We developed the integration in a week and deployed it in a day.",
-name:"Amanda Tighe",
-role:"Project Manager, Saint-Gobain"
-}
+a1:{pain:"Siloed ERP and supply chain systems created blind spots impacting business and customer trust."},
+a2:{number:"1 Week → 1 Day",context:"Serverless integrations connected ERP and supply chain workflows for 200+ users."},
+a3:{quote:"We developed the integration in a week and deployed it in a day.",name:"Amanda Tighe",role:"Project Manager"}
 },
 
 {
@@ -359,22 +334,9 @@ company:"Livpure",
 industry:"E-Commerce",
 color:"#5cbf9e",
 components:["Serverless Functions","APIs","Data Store"],
-
-a1:{
-pain:"Siloed inventory, logistics, and order data meant customers had zero delivery visibility.",
-tag:"Livpure · E-Commerce"
-},
-
-a2:{
-number:"Real-time",
-context:"Livpure unified WMS and OMS to show delivery dates by location."
-},
-
-a3:{
-quote:"Estimated delivery dates are displayed on the webpage within seconds.",
-name:"Livpure Team",
-role:"Livpure"
-}
+a1:{pain:"Inventory, logistics and order data were siloed leaving customers without delivery visibility."},
+a2:{number:"Seconds",context:"Livpure unified WMS and OMS to display delivery estimates instantly."},
+a3:{quote:"Estimated delivery dates are displayed on the webpage within seconds.",name:"Livpure Team",role:"Livpure"}
 },
 
 {
@@ -382,22 +344,9 @@ company:"BuildHR",
 industry:"HR Technology",
 color:"#fcd34d",
 components:["Serverless Functions","Data Store","Authentication"],
-
-a1:{
-pain:"HR needed a custom candidate evaluation portal but lacked secure infrastructure to scale.",
-tag:"BuildHR · HR Technology"
-},
-
-a2:{
-number:"Global Scale",
-context:"Catalyst enabled infrastructure that scaled securely with client growth."
-},
-
-a3:{
-quote:"Catalyst has been a holistic and cost-effective platform for our development.",
-name:"Lakshmi Narayan",
-role:"Executive Director, BuildHR"
-}
+a1:{pain:"HR needed secure infrastructure to scale a candidate evaluation portal."},
+a2:{number:"Global",context:"Catalyst enabled secure infrastructure scaling to support global candidate pools."},
+a3:{quote:"Catalyst has been a holistic and cost-effective platform for our development.",name:"Lakshmi Narayan",role:"Executive Director"}
 },
 
 {
@@ -405,22 +354,9 @@ company:"ConstructionBOS",
 industry:"Construction",
 color:"#fb923c",
 components:["Serverless Functions","APIs","Microservices"],
-
-a1:{
-pain:"Spreadsheets and manual updates across multi-year projects left teams with stale data.",
-tag:"ConstructionBOS · Construction"
-},
-
-a2:{
-number:"Live Data",
-context:"Catalyst microservices synced CRM and third-party project data automatically."
-},
-
-a3:{
-quote:"Building the microservice on Catalyst was easy! We never had to deal with infrastructure management.",
-name:"Craig Mulcahy",
-role:"CEO"
-}
+a1:{pain:"Manual spreadsheets across projects caused stale data and lost opportunities."},
+a2:{number:"Live Data",context:"Catalyst microservices synced CRM and project data automatically."},
+a3:{quote:"Building the microservice on Catalyst was easy! We never had to deal with infrastructure management.",name:"Craig Mulcahy",role:"CEO"}
 },
 
 {
@@ -428,22 +364,9 @@ company:"ProCreator",
 industry:"Digital Products",
 color:"#4ecdc4",
 components:["Serverless Functions","APIs","Application Services"],
-
-a1:{
-pain:"Back-end setup slowed website update cycles.",
-tag:"ProCreator · Digital Products"
-},
-
-a2:{
-number:"60–70%",
-context:"Catalyst powered a dynamic CMS for lightning-fast webpage deployments."
-},
-
-a3:{
-quote:"Development time was reduced by 60–70%, enabling faster delivery of dynamic pages.",
-name:"ProCreator Team",
-role:"ProCreator"
-}
+a1:{pain:"Backend setup slowed website update cycles."},
+a2:{number:"60-70%",context:"Catalyst powered a dynamic CMS enabling lightning-fast deployments."},
+a3:{quote:"Development time was reduced by 60–70%, enabling faster delivery of dynamic pages.",name:"ProCreator Team",role:"ProCreator"}
 },
 
 {
@@ -451,22 +374,9 @@ company:"Codafish",
 industry:"Application Development",
 color:"#e8b96a",
 components:["Serverless Functions","APIs"],
-
-a1:{
-pain:"ERP and CRM were siloed across 95 stores and 400k customers.",
-tag:"Codafish · Application Development"
-},
-
-a2:{
-number:"400K+",
-context:"Catalyst unified ERP and CRM records across the business."
-},
-
-a3:{
-quote:"Catalyst enables developers to build and scale applications without worrying about servers.",
-name:"Timo Müller",
-role:"Executive Director"
-}
+a1:{pain:"ERP and CRM were siloed across 95 stores and 400k customers."},
+a2:{number:"400K+",context:"Catalyst unified customer records across systems."},
+a3:{quote:"Catalyst enables developers to build and scale applications without worrying about servers.",name:"Timo Müller",role:"Executive Director"}
 },
 
 {
@@ -474,22 +384,9 @@ company:"Livasa Hospitals",
 industry:"Healthcare",
 color:"#f472b6",
 components:["Serverless Functions","APIs","Authentication"],
-
-a1:{
-pain:"Disconnected hospital systems made integrations slow and unstable.",
-tag:"Livasa Hospitals · Healthcare"
-},
-
-a2:{
-number:"30%",
-context:"Catalyst cut development time by 30% and launched in under 4 months."
-},
-
-a3:{
-quote:"Catalyst made interoperability seamless and reduced our go-to-market time.",
-name:"Dishant Gupta",
-role:"Group Head – IT"
-}
+a1:{pain:"Disconnected hospital systems made integrations slow and unstable."},
+a2:{number:"30%",context:"Catalyst reduced development time and launched the system in under 4 months."},
+a3:{quote:"Catalyst made interoperability seamless and reduced our go-to-market time.",name:"Dishant Gupta",role:"Group Head – IT"}
 },
 
 {
@@ -497,198 +394,116 @@ company:"Dotsquares",
 industry:"Enterprise IT",
 color:"#63b3ed",
 components:["Serverless Functions","APIs","Data Store"],
-
-a1:{
-pain:"Infrastructure provisioning slowed development timelines.",
-tag:"Dotsquares · Enterprise IT"
-},
-
-a2:{
-number:"70%",
-context:"Catalyst powered automated payment workflows reducing manual work."
-},
-
-a3:{
-quote:"Catalyst’s flexibility helped turn a challenge into a growth opportunity.",
-name:"Rahul Gupta",
-role:"Lead Development Strategist"
+a1:{pain:"Infrastructure provisioning slowed development timelines."},
+a2:{number:"70%",context:"Catalyst automated payment management workflows reducing manual work."},
+a3:{quote:"Catalyst’s flexibility helped turn a challenge into a growth opportunity.",name:"Rahul Gupta",role:"Lead Development Strategist"}
 }
-}
+]
 
-];
+let si=0,ai=0,timer
 
-let si=0, ai=0, timer=null;
-
-const stage=document.getElementById("stage");
-const fill=document.getElementById("progFill");
+const stage=document.getElementById("stage")
+const fill=document.getElementById("progFill")
 
 function setAtmos(){
-const s=S[si];
-
-document.getElementById("ghostName").textContent=s.company.toUpperCase();
-document.getElementById("ghostName").style.color=s.color+"20";
-document.getElementById("sNum").textContent=si+1;
+document.getElementById("ghostName").textContent=S[si].company.toUpperCase()
+document.getElementById("sNum").textContent=si+1
 }
 
 function showAct(){
 
-const s=S[si];
-stage.innerHTML="";
+const s=S[si]
+stage.innerHTML=""
 
-let html="";
+let html=""
 
 if(ai===0){
-
 html=`
 <div class="act visible">
-
 <div class="act-label">Challenge</div>
-
 <div class="pain-line">${s.a1.pain}</div>
 
 <div class="company-tag">
 <div class="tag-line" style="background:${s.color}"></div>
-
 <div>
 <div class="tag-name" style="color:${s.color}">${s.company}</div>
 <div class="tag-industry">${s.industry}</div>
 </div>
-
 </div>
-
-</div>
-`;
-
+</div>`
 }
 
 else if(ai===1){
-
 html=`
 <div class="act visible">
-
 <div class="act-label">Catalyst Impact</div>
-
-<div class="big-number" style="color:${s.color}">
-${s.a2.number}
-</div>
-
-<div class="number-context">
-${s.a2.context}
-</div>
-
-</div>
-`;
-
+<div class="big-number" style="color:${s.color}">${s.a2.number}</div>
+<div class="number-context">${s.a2.context}</div>
+</div>`
 }
 
 else{
 
-const chips=s.components.map(c=>`<span class="comp-chip">${c}</span>`).join("");
+const chips=s.components.map(c=>`<span class="comp-chip">${c}</span>`).join("")
 
 html=`
 <div class="act visible">
-
-<div class="voice-quote">
-"${s.a3.quote}"
-</div>
+<div class="voice-quote">"${s.a3.quote}"</div>
 
 <div class="voice-person">
-<div class="person-name" style="color:${s.color}">
-${s.a3.name}
-</div>
-
-<div class="person-role">
-${s.a3.role}
-</div>
+<div class="person-name" style="color:${s.color}">${s.a3.name}</div>
+<div class="person-role">${s.a3.role}</div>
 </div>
 
 <div class="components-row">${chips}</div>
-
-</div>
-`;
-
+</div>`
 }
 
-stage.innerHTML=html;
+stage.innerHTML=html
 
-startTimer();
+startTimer()
 }
 
 function startTimer(){
 
-clearInterval(timer);
+clearInterval(timer)
 
-fill.style.width="0%";
+fill.style.width="0%"
 
-const start=Date.now();
+const start=Date.now()
 
 timer=setInterval(()=>{
 
-const pct=Math.min(100,(Date.now()-start)/ACT_TIME*100);
-fill.style.width=pct+"%";
+const pct=Math.min(100,(Date.now()-start)/ACT_TIME*100)
+fill.style.width=pct+"%"
 
 if(pct>=100){
 
-clearInterval(timer);
+clearInterval(timer)
 
 if(ai<2){
-ai++;
-showAct();
+ai++
+showAct()
 }
+
 else{
-ai=0;
-si=(si+1)%S.length;
-setAtmos();
-showAct();
+ai=0
+si=(si+1)%S.length
+setAtmos()
+showAct()
 }
 
 }
 
-},40);
+},40)
 
 }
 
-/* Footer dots */
-
-const fd=document.getElementById("footerDots");
-
-S.forEach((_,i)=>{
-
-const d=document.createElement("div");
-d.className="f-dot"+(i===0?" active":"");
-
-d.onclick=()=>{
-si=i;
-ai=0;
-setAtmos();
-showAct();
-};
-
-fd.appendChild(d);
-
-});
-
-/* keyboard navigation */
-
-document.addEventListener("keydown",e=>{
-
-if(e.key==="ArrowRight"){
-ai=ai<2?ai+1:0;
-if(ai===0)si=(si+1)%S.length;
-setAtmos();
-showAct();
-}
-
-});
-
-/* start */
-
-setAtmos();
-showAct();
+setAtmos()
+showAct()
 
 </script>
 
 </body>
 </html>
 ```
-
