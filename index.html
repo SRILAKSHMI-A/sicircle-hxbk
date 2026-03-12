@@ -278,7 +278,13 @@ function render(){
 
   let html = '';
   if(ai===0){
-    html = `<div class="act"><div class="act-content"><div class="act-label">The Challenge</div><div class="pain-text">${s.pain}</div><div class="company-row"><div class="company-bar" style="background:${s.color}"></div><div><div class="company-name" style="color:${s.color}">${s.company}</div><div class="company-industry">${s.industry}</div></div></div></div>${co}</div>`;
+    html = `<div class="act">
+  <div class="act-content">
+    <div class="act-label">The Challenge</div>
+    <div class="pain-text">${s.pain}</div>
+  </div>
+  ${co}
+</div>`;
   } else if(ai===1){
     html = `<div class="act"><div class="act-content"><div class="act-label">Catalyst Impact</div><div class="hero-number" style="color:${s.color}">${s.number}</div><div class="impact-desc">${s.desc}</div></div>${co}</div>`;
   } else {
