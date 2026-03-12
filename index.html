@@ -1,281 +1,141 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalyst · Customer Stories</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<title>Catalyst Stories</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 html,body{
 width:100%;
 height:100%;
 overflow:hidden;
-font-family:'Barlow',sans-serif;
+font-family:'Barlow Condensed',sans-serif;
 
-/* BACKDROP IMAGE */
-background-image:url("backdrop.png"); /* replace with your exported backdrop image */
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-}
+/* Catalyst gradient backdrop */
 
-/* Dark overlay so text is readable */
+background:
+radial-gradient(circle at 20% 20%, rgba(92,90,255,0.4), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(120,40,255,0.35), transparent 40%),
+linear-gradient(135deg,#1a0c3a,#120a2e,#070716);
 
-#overlay{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.45);
-z-index:0;
-}
-
-/* Top & bottom cinematic bars */
-
-.letterbox-top,.letterbox-bottom{
-position:fixed;
-left:0;
-right:0;
-height:70px;
-background:black;
-z-index:100;
-}
-
-.letterbox-top{top:0}
-.letterbox-bottom{bottom:0}
-
-/* Huge ghost company text */
-
-#ghostName{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-family:'Barlow Condensed';
-font-weight:900;
-font-size:clamp(220px,22vw,420px);
-letter-spacing:-6px;
-opacity:.07;
-color:white;
-pointer-events:none;
-z-index:1;
-}
-
-/* Header */
-
-header{
-position:fixed;
-top:0;
-left:0;
-right:0;
-height:70px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 50px;
-z-index:110;
-}
-
-.brand{
-font-family:'Barlow Condensed';
-letter-spacing:6px;
-font-size:18px;
-text-transform:uppercase;
 color:white;
 }
 
-.story-num{
-font-family:'Barlow Condensed';
-letter-spacing:4px;
-font-size:18px;
-color:white;
-}
+/* container */
 
-.prog-track{
-width:160px;
-height:3px;
-background:#444;
-margin-left:20px;
-}
-
-.prog-fill{
-height:3px;
-width:0%;
-background:white;
-}
-
-/* Stage */
-
-.stage{
-position:fixed;
-inset:0;
+.story-container{
+width:100vw;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:10;
+text-align:center;
+padding:80px;
 }
 
-/* Act container */
-
-.act{
-position:absolute;
-inset:100px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:0 10vw;
-opacity:0;
-transition:opacity .6s ease;
-}
-
-.act.visible{opacity:1}
-
-/* Section label */
-
-.act-label{
-font-family:'Barlow Condensed';
-letter-spacing:6px;
-font-size:18px;
-text-transform:uppercase;
-color:#ccc;
-margin-bottom:40px;
-}
-
-/* Challenge text */
+/* CHALLENGE TEXT */
 
 .pain-line{
 font-family:'Libre Baskerville';
 font-style:italic;
-font-size:clamp(60px,5vw,100px);
+font-size:clamp(44px,5vw,96px);
 line-height:1.25;
-color:white;
-max-width:1500px;
+max-width:1400px;
 }
 
-/* Company tag */
+/* IMPACT */
 
-.company-tag{
-margin-top:50px;
+.impact{
 display:flex;
-gap:20px;
+flex-direction:column;
 align-items:center;
+justify-content:center;
 }
-
-.tag-line{
-width:40px;
-height:2px;
-}
-
-.tag-name{
-font-family:'Barlow Condensed';
-letter-spacing:5px;
-text-transform:uppercase;
-font-size:30px;
-}
-
-.tag-industry{
-font-size:22px;
-color:#aaa;
-}
-
-/* Big impact number */
 
 .big-number{
-font-family:'Barlow Condensed';
 font-weight:900;
-font-size:clamp(200px,22vw,420px);
-line-height:.9;
+font-size:clamp(180px,22vw,420px);
 letter-spacing:-6px;
+line-height:.9;
+background:linear-gradient(90deg,#9c6bff,#6bc7ff);
+-webkit-background-clip:text;
+color:transparent;
 }
-
-/* Impact context */
 
 .number-context{
 font-family:'Libre Baskerville';
-font-size:clamp(36px,3vw,60px);
-margin-top:40px;
-max-width:1200px;
+font-size:clamp(34px,3vw,54px);
+margin-top:30px;
+max-width:1000px;
 color:#ddd;
 }
 
-/* Quote */
+/* VOICE */
+
+.voice{
+max-width:1400px;
+}
 
 .voice-quote{
 font-family:'Libre Baskerville';
 font-style:italic;
-font-size:clamp(46px,4vw,90px);
+font-size:clamp(38px,4vw,80px);
 line-height:1.35;
-color:white;
-max-width:1500px;
 }
 
-/* Person */
-
-.voice-person{
+.person{
 margin-top:50px;
 }
 
 .person-name{
-font-family:'Barlow Condensed';
+font-size:28px;
 letter-spacing:4px;
-font-size:34px;
 text-transform:uppercase;
 }
 
-.person-role{
-font-size:24px;
-color:#aaa;
-margin-top:6px;
-}
+/* COMPONENTS */
 
-/* Component chips */
-
-.components-row{
-margin-top:40px;
+.components{
 display:flex;
-gap:14px;
+gap:20px;
 flex-wrap:wrap;
+justify-content:center;
+margin-top:50px;
 }
 
 .comp-chip{
-font-family:'Barlow Condensed';
-font-size:24px;
+padding:12px 20px;
+font-size:20px;
+border-radius:40px;
+border:1px solid rgba(255,255,255,0.3);
+background:rgba(255,255,255,0.05);
 letter-spacing:3px;
-padding:10px 18px;
-border:1px solid #666;
-border-radius:4px;
-color:#ddd;
 }
 
-/* Footer navigation dots */
-
-.footer-dots{
-position:fixed;
-bottom:70px;
-left:50%;
-transform:translateX(-50%);
+.slide{
+position:absolute;
+width:100%;
+height:100%;
 display:flex;
-gap:10px;
-z-index:110;
+align-items:center;
+justify-content:center;
+opacity:0;
+transition:opacity 1s ease;
 }
 
-.f-dot{
-width:6px;
-height:6px;
-border-radius:50%;
-background:#666;
-cursor:pointer;
-transition:.3s;
-}
-
-.f-dot.active{
-width:24px;
-border-radius:4px;
-background:white;
+.slide.active{
+opacity:1;
 }
 
 </style>
@@ -283,227 +143,78 @@ background:white;
 
 <body>
 
-<div id="overlay"></div>
+<!-- Slide 1 -->
 
-<div class="letterbox-top"></div>
-<div class="letterbox-bottom"></div>
-
-<div id="ghostName"></div>
-
-<header>
-
-<div class="brand"><b>Catalyst</b> · Customer Stories</div>
-
-<div style="display:flex;align-items:center">
-<div class="story-num"><b id="sNum">1</b> / 9</div>
-<div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+<div class="slide active">
+<div class="story-container">
+<p class="pain-line">
+Manufacturers struggled with scattered inspection photos, delayed reporting, and no centralized storage for field engineers.
+</p>
+</div>
 </div>
 
-</header>
 
-<div class="stage" id="stage"></div>
-<div class="footer-dots" id="footerDots"></div>
+<!-- Slide 2 -->
+
+<div class="slide">
+<div class="story-container impact">
+
+<div class="big-number">
+3x
+</div>
+
+<p class="number-context">
+Faster inspection reporting after implementing secure mobile uploads and automated notifications.
+</p>
+
+</div>
+</div>
+
+
+<!-- Slide 3 -->
+
+<div class="slide">
+<div class="story-container voice">
+
+<p class="voice-quote">
+“Catalyst helped us build a secure inspection platform quickly. Our field engineers can upload photos instantly, and our teams receive alerts in real time.”
+</p>
+
+<div class="person">
+<div class="person-name">
+Operations Head
+</div>
+</div>
+
+<div class="components">
+
+<div class="comp-chip">FILE STORE</div>
+<div class="comp-chip">SERVERLESS FUNCTIONS</div>
+<div class="comp-chip">EVENTS</div>
+<div class="comp-chip">NOTIFICATIONS</div>
+
+</div>
+
+</div>
+</div>
 
 <script>
 
-const ACT_TIME=5200
+const slides = document.querySelectorAll(".slide")
 
-const S=[
-{
-company:"Swiggy",
-industry:"Food Tech",
-color:"#e05c5c",
-components:["QuickML","APIs"],
-a1:{pain:"Attrition was rising with no early-warning system to see it coming. MLOps made deploying sentiment models slow and painfully complex."},
-a2:{number:"Overnight",context:"Swiggy built an unhappy employee prediction model overnight using no-code ML deployment."},
-a3:{quote:"QuickML, with its API capabilities, helped us deploy the model overnight and use production data for interventions.",name:"Daksh Sahni",role:"People Analytics & Behavioural Sciences"}
-},
+let index = 0
 
-{
-company:"Saint-Gobain",
-industry:"Supply Chain",
-color:"#4a9edd",
-components:["Serverless Functions","Event Triggers","APIs"],
-a1:{pain:"Siloed ERP and supply chain systems created blind spots impacting business and customer trust."},
-a2:{number:"1 Week → 1 Day",context:"Serverless integrations connected ERP and supply chain workflows for 200+ users."},
-a3:{quote:"We developed the integration in a week and deployed it in a day.",name:"Amanda Tighe",role:"Project Manager"}
-},
+setInterval(()=>{
 
-{
-company:"Livpure",
-industry:"E-Commerce",
-color:"#5cbf9e",
-components:["Serverless Functions","APIs","Data Store"],
-a1:{pain:"Inventory, logistics and order data were siloed leaving customers without delivery visibility."},
-a2:{number:"Seconds",context:"Livpure unified WMS and OMS to display delivery estimates instantly."},
-a3:{quote:"Estimated delivery dates are displayed on the webpage within seconds.",name:"Livpure Team",role:"Livpure"}
-},
+slides[index].classList.remove("active")
 
-{
-company:"BuildHR",
-industry:"HR Technology",
-color:"#fcd34d",
-components:["Serverless Functions","Data Store","Authentication"],
-a1:{pain:"HR needed secure infrastructure to scale a candidate evaluation portal."},
-a2:{number:"Global",context:"Catalyst enabled secure infrastructure scaling to support global candidate pools."},
-a3:{quote:"Catalyst has been a holistic and cost-effective platform for our development.",name:"Lakshmi Narayan",role:"Executive Director"}
-},
+index = (index+1) % slides.length
 
-{
-company:"ConstructionBOS",
-industry:"Construction",
-color:"#fb923c",
-components:["Serverless Functions","APIs","Microservices"],
-a1:{pain:"Manual spreadsheets across projects caused stale data and lost opportunities."},
-a2:{number:"Live Data",context:"Catalyst microservices synced CRM and project data automatically."},
-a3:{quote:"Building the microservice on Catalyst was easy! We never had to deal with infrastructure management.",name:"Craig Mulcahy",role:"CEO"}
-},
+slides[index].classList.add("active")
 
-{
-company:"ProCreator",
-industry:"Digital Products",
-color:"#4ecdc4",
-components:["Serverless Functions","APIs","Application Services"],
-a1:{pain:"Backend setup slowed website update cycles."},
-a2:{number:"60-70%",context:"Catalyst powered a dynamic CMS enabling lightning-fast deployments."},
-a3:{quote:"Development time was reduced by 60–70%, enabling faster delivery of dynamic pages.",name:"ProCreator Team",role:"ProCreator"}
-},
-
-{
-company:"Codafish",
-industry:"Application Development",
-color:"#e8b96a",
-components:["Serverless Functions","APIs"],
-a1:{pain:"ERP and CRM were siloed across 95 stores and 400k customers."},
-a2:{number:"400K+",context:"Catalyst unified customer records across systems."},
-a3:{quote:"Catalyst enables developers to build and scale applications without worrying about servers.",name:"Timo Müller",role:"Executive Director"}
-},
-
-{
-company:"Livasa Hospitals",
-industry:"Healthcare",
-color:"#f472b6",
-components:["Serverless Functions","APIs","Authentication"],
-a1:{pain:"Disconnected hospital systems made integrations slow and unstable."},
-a2:{number:"30%",context:"Catalyst reduced development time and launched the system in under 4 months."},
-a3:{quote:"Catalyst made interoperability seamless and reduced our go-to-market time.",name:"Dishant Gupta",role:"Group Head – IT"}
-},
-
-{
-company:"Dotsquares",
-industry:"Enterprise IT",
-color:"#63b3ed",
-components:["Serverless Functions","APIs","Data Store"],
-a1:{pain:"Infrastructure provisioning slowed development timelines."},
-a2:{number:"70%",context:"Catalyst automated payment management workflows reducing manual work."},
-a3:{quote:"Catalyst’s flexibility helped turn a challenge into a growth opportunity.",name:"Rahul Gupta",role:"Lead Development Strategist"}
-}
-]
-
-let si=0,ai=0,timer
-
-const stage=document.getElementById("stage")
-const fill=document.getElementById("progFill")
-
-function setAtmos(){
-document.getElementById("ghostName").textContent=S[si].company.toUpperCase()
-document.getElementById("sNum").textContent=si+1
-}
-
-function showAct(){
-
-const s=S[si]
-stage.innerHTML=""
-
-let html=""
-
-if(ai===0){
-html=`
-<div class="act visible">
-<div class="act-label">Challenge</div>
-<div class="pain-line">${s.a1.pain}</div>
-
-<div class="company-tag">
-<div class="tag-line" style="background:${s.color}"></div>
-<div>
-<div class="tag-name" style="color:${s.color}">${s.company}</div>
-<div class="tag-industry">${s.industry}</div>
-</div>
-</div>
-</div>`
-}
-
-else if(ai===1){
-html=`
-<div class="act visible">
-<div class="act-label">Catalyst Impact</div>
-<div class="big-number" style="color:${s.color}">${s.a2.number}</div>
-<div class="number-context">${s.a2.context}</div>
-</div>`
-}
-
-else{
-
-const chips=s.components.map(c=>`<span class="comp-chip">${c}</span>`).join("")
-
-html=`
-<div class="act visible">
-<div class="voice-quote">"${s.a3.quote}"</div>
-
-<div class="voice-person">
-<div class="person-name" style="color:${s.color}">${s.a3.name}</div>
-<div class="person-role">${s.a3.role}</div>
-</div>
-
-<div class="components-row">${chips}</div>
-</div>`
-}
-
-stage.innerHTML=html
-
-startTimer()
-}
-
-function startTimer(){
-
-clearInterval(timer)
-
-fill.style.width="0%"
-
-const start=Date.now()
-
-timer=setInterval(()=>{
-
-const pct=Math.min(100,(Date.now()-start)/ACT_TIME*100)
-fill.style.width=pct+"%"
-
-if(pct>=100){
-
-clearInterval(timer)
-
-if(ai<2){
-ai++
-showAct()
-}
-
-else{
-ai=0
-si=(si+1)%S.length
-setAtmos()
-showAct()
-}
-
-}
-
-},40)
-
-}
-
-setAtmos()
-showAct()
+},7000)
 
 </script>
 
 </body>
 </html>
-```
