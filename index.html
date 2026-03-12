@@ -159,24 +159,53 @@ header {
   background: rgba(255,255,255,0.03); border-radius: 2px;
 }
 
-/* ── COMPANY NAME PANEL ── */
 .act-hero {
   opacity: 0; transform: translateX(20px);
   transition: opacity 0.7s 0.35s ease, transform 0.7s 0.35s ease;
 }
-.act.visible .act-hero { opacity: 1; transform: none; }
-.company-display-name {
-  font-family: 'Barlow Condensed'; font-weight: 900;
-  font-size: clamp(22px, 4.2vw, 64px); line-height: 0.95;
-  letter-spacing: 1px; text-transform: uppercase;
-  margin-bottom: 14px; display: flex; flex-direction: column; gap: 4px; width: 100%;
+
+.act.visible .act-hero { 
+  opacity: 1; 
+  transform: none; 
 }
-.company-display-name span { display: block; white-space: nowrap; }
-.company-display-name span:nth-child(even) { padding-left: 10px; opacity: 0.7; }
-.company-display-dot { height: 3px; width: 48px; border-radius: 2px; margin-bottom: 12px; }
+
+.company-display-name {
+  font-family: 'Barlow Condensed'; 
+  font-weight: 900;
+  font-size: clamp(36px, 6vw, 92px);   /* increased */
+  line-height: 0.95;
+  letter-spacing: 2px;                 /* slightly increased */
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  width: 100%;
+}
+
+.company-display-name span { 
+  display: block; 
+  white-space: nowrap; 
+}
+
+.company-display-name span:nth-child(even) { 
+  padding-left: 16px;                  /* slightly increased */
+  opacity: 0.7; 
+}
+
+.company-display-dot { 
+  height: 4px;                         /* thicker line */
+  width: 64px;                         /* longer */
+  border-radius: 2px; 
+  margin-bottom: 16px; 
+}
+
 .company-display-industry {
-  font-family: 'Barlow Condensed'; font-weight: 300;
-  font-size: clamp(11px, 1.2vw, 16px); letter-spacing: 6px; text-transform: uppercase;
+  font-family: 'Barlow Condensed'; 
+  font-weight: 300;
+  font-size: clamp(16px, 1.6vw, 24px); /* increased */
+  letter-spacing: 7px;
+  text-transform: uppercase;
   color: rgba(255,255,255,0.35);
 }
 
