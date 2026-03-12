@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalyst · Customer Stories</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@1&family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 100%; height: 100%; background: #0a1032; overflow: hidden; font-family: 'Barlow', sans-serif; color: white; }
 
+/* ── WAVE BORDERS ── */
 .wave-top {
   position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 200;
   background: url('data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAB6A9ADASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAYHAgUDBAgBCf/EAEQQAAEDAgMFBAgFAgUCBgMAAAEAAgMEBQYHERIhMUFREyJhgRQyM3FykaGxI0JSYsEV0RYkQ4LxCPA0Y3OSotJTwuH/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAgMEBQEG/8QANxEAAgICAAUCBAMGBgMBAAAAAAECAwQREiExQVEFExQiMnFhkfAVIzOBobEkQlJiovFywdHh/9oADAMBAAIRAxEAPwDyjUe3f8RXGuSo9u/4iuNfX0/w4/ZGCXVhERWHgREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBZw+2Z8QWCzh9sz4goWfQ/serqfaj27/iK41PMF5d12ImOuFVP6FROeQx2zq+XqQOQ8St3fsoXw0b5bPcnTzMaT2UzQNvwBHA+9WUUzdUWl2Rgt9Uxa7XXKXMqhFnPFJBM+GZjmSMcWua4aEEclgvDd1CIs4o5JpGxRMdI9x0a1o1JKAwRTvD+V2IrlG2ar7K2xO3jttTJp8I4eZCksOTlMGfjXqYu/ZEAPqVdGix9jnW+q4lb05/lzKfRWxXZOSBpNDeml3Js0XHzB/hQfEuD7/h8l1fREwcp4jtxnz5eeijKqceqLKPUca96hPn+X9yPoiKs2hEW8wdhm4YnuRpKIBjGDammcO7GPHqfBepNvSIWWRri5zekjRorhfk5S+i6MvU3pGnExDY193H6qs8UWGvw7dX2+vYA4DaY9vqyN5OCnOqcFtoy43qGPkyca5czVIiKs2hEUlwzgfEN/AkpaTsac/wCvOdhnlzPkF6ouT0iu22FUeKb0iNIrbo8nO6DWXvvcxFDw8yVyVGTkBZ/l73I1374QR9Crvh7PBz36zh71x/0ZUCKa4iy0xHaY3Twxx3CBu8up9dsDxad/y1UMe1zHFj2lrgdCCNCFVKDjyaN1ORVeuKuWzFERRLgi56GlqK6ripKSJ0s8rg1jG8SValqyea6la66XZ7JyNSyBgLWnpqeKshXKf0oyZObRi692WtlSIpjj3AdwwwxtW2UVlA47PatboYzyDh49VDlGUXF6ZdTfXfDjre0ERFEtCLZWKx3a91AgtdFLUO5uA0a33uO4KfWzJ64SRh9xusEDjxZEwv08zorI1yn0RkvzsfH5WS0yr0VxOyco9nu3mo2vGIaLS3jKO800ZkttbT12g17Nw7Nx92u76hSePYuxnh6vhzelP89lbou1cqCtttS6mr6WWmmbxZI3QrqqrodJNSW0ERF4ehFYWCssqy9UMdxuVS6hppRtRMDdZHt5O38AV3cUZT1FFQyVdnrXVhjbtOgkYA9w8CN3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EAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBZw+2Z8QWCzh9sz4goWfQ/serqfaj27/iK41yVHt3/ABFca8p/hx+yEurCIisPAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCzh9sz4gsFnD7ZnxBQs+h/Y9XU+1Ht3/EVxrkqPbv8AiK415T/Dj9kJdWERFYeBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAFnD7ZnxBYLOH2zPiChZ9D+x6up//2Q==') repeat-x left center / auto 56px;
@@ -19,186 +20,176 @@ html, body { width: 100%; height: 100%; background: #0a1032; overflow: hidden; f
   transform: scaleY(-1);
 }
 
+/* ── ATMOSPHERE ── */
+#lightBleed {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  transition: background 1.6s ease;
+}
+#ghostName {
+  position: fixed; right: -2%; top: 50%; transform: translateY(-50%);
+  font-family: 'Barlow Condensed'; font-weight: 900;
+  font-size: clamp(100px, 18vw, 260px); letter-spacing: -6px;
+  text-transform: uppercase; white-space: nowrap;
+  pointer-events: none; z-index: 2; user-select: none;
+  writing-mode: vertical-rl;
+  opacity: 0.06; transition: color 1s ease, opacity 0.6s ease;
+}
+
+/* ── HEADER ── */
 header {
   position: fixed; top: 56px; left: 0; right: 0; height: 76px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 52px; z-index: 100;
-  background: #0a1032;
-  border-bottom: 1px solid rgba(91,155,213,0.15);
+  padding: 0 52px; z-index: 100; background: #0a1032;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
-/* Icon only from the PNG — screen blend removes black bg, shows red+blue icon */
-.logo-icon {
-  height: 52px;
-  /* crop to just the icon portion — image is 640x160, icon is roughly left 200px */
-  width: 80px;
-  object-fit: cover;
-  object-position: left center;
-  mix-blend-mode: screen;
-}
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  margin-left: 4px;
-}
-.logo-catalyst {
-  font-family: 'Barlow', sans-serif;
-  font-weight: 600;
-  font-size: 32px;
-  color: white;
-  letter-spacing: 0;
-}
-.logo-byzoho {
-  font-family: 'Barlow', sans-serif;
-  font-weight: 300;
-  font-size: 15px;
-  color: rgba(255,255,255,0.6);
-  margin-top: 2px;
-}
-
+.logo { display: flex; align-items: center; gap: 4px; }
+.logo-icon { height: 52px; width: 80px; object-fit: cover; object-position: left center; mix-blend-mode: screen; }
+.logo-text { display: flex; flex-direction: column; line-height: 1; margin-left: 4px; }
+.logo-catalyst { font-family: 'Barlow'; font-weight: 600; font-size: 32px; color: white; }
+.logo-byzoho { font-family: 'Barlow'; font-weight: 300; font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 2px; }
 .header-right { display: flex; align-items: center; gap: 16px; }
-.counter { font-family: 'Barlow Condensed'; font-size: 15px; letter-spacing: 2px; color: rgba(255,255,255,0.35); }
-.counter b { color: white; }
-.prog-track { width: 80px; height: 2px; background: rgba(255,255,255,0.1); }
-.prog-fill  { height: 2px; background: #e63329; width: 0%; }
+.counter { font-family: 'Barlow Condensed'; font-size: 13px; letter-spacing: 3px; color: rgba(255,255,255,0.25); }
+.counter b { color: rgba(255,255,255,0.6); }
+.prog-track { width: 80px; height: 1px; background: rgba(255,255,255,0.1); }
+.prog-fill { height: 1px; background: rgba(255,255,255,0.55); width: 0%; transition: none; }
 
-.stage { position: fixed; top: 132px; bottom: 56px; left: 0; right: 0; overflow: hidden; }
+/* ── STAGE ── */
+.stage { position: fixed; top: 132px; bottom: 56px; left: 0; right: 0; z-index: 10; }
 
-.act { position: absolute; inset: 0; display: flex; flex-direction: row; align-items: center; opacity: 0; transition: opacity 0.6s ease; pointer-events: none; }
+/* ── ACT LAYOUT ── */
+.act {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: row; align-items: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.6s ease;
+}
 .act.visible { opacity: 1; pointer-events: auto; }
-
-/* Left: content area */
-.act-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 3vw 0 8vw; gap: 0; }
-
-/* Right: company name panel — trendy stacked split-word style */
+.act-content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 3vw 0 8vw; }
 .act-hero {
-  width: 35%;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0 24px 0 44px;
-  border-left: 1px solid rgba(255,255,255,0.08);
-  gap: 0;
-  overflow: hidden;
+  width: 35%; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+  padding: 0 32px 0 48px;
+  border-left: 1px solid rgba(255,255,255,0.07);
 }
 
-/* Each word of company name on its own line, auto-sized to fit */
-.company-display-name {
-  font-family: 'Barlow Condensed';
-  font-weight: 900;
-  font-size: clamp(22px, 4.2vw, 64px);
-  line-height: 0.95;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: 100%;
-}
-.company-display-name span {
-  display: block;
-  white-space: nowrap;
-}
-.company-display-name span:nth-child(even) {
-  padding-left: 10px;
-  opacity: 0.7;
-}
-
-/* Colour underline bar */
-.company-display-dot {
-  height: 3px;
-  width: 48px;
-  border-radius: 2px;
-  margin-bottom: 12px;
-}
-
-/* Industry tag */
-.company-display-industry {
-  font-family: 'Barlow Condensed';
-  font-weight: 400;
-  font-size: clamp(11px, 1.2vw, 16px);
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.38);
-}
-
-/* ── ACT LABEL — visible from 10 feet ── */
+/* ── ACT LABEL ── */
 .act-label {
-  font-family: 'Barlow Condensed';
-  font-weight: 900;
-  font-size: clamp(28px, 3.5vw, 48px);
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-bottom: 14px;
+  font-family: 'Barlow Condensed'; font-weight: 300;
+  font-size: clamp(22px, 2.4vw, 34px); letter-spacing: 6px; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin-bottom: 20px;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.5s 0.1s ease, transform 0.5s 0.1s ease;
 }
-.label-challenge { color: #e63329; }
-.label-impact    { color: #5bb2e0; }
-.label-words     { color: #f5c842; }
+.act.visible .act-label { opacity: 1; transform: none; }
 
-/* ── BODY TEXT — same size across all 3 acts ── */
+/* ── ACT I — CHALLENGE ── */
 .pain-text {
-  font-family: 'Libre Baskerville';
-  font-style: italic;
-  font-size: clamp(20px, 2.4vw, 34px);
-  line-height: 1.4;
-  color: white;
+  font-family: 'Libre Baskerville'; font-style: italic;
+  font-size: clamp(20px, 2.6vw, 36px); line-height: 1.45; color: rgba(255,255,255,0.85);
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.8s 0.25s ease, transform 0.8s 0.25s ease;
 }
-.company-row { display: flex; align-items: center; gap: 14px; margin-top: 20px; }
-.company-bar { width: 28px; height: 3px; flex-shrink: 0; }
-.company-name { font-family: 'Barlow Condensed'; font-weight: 700; font-size: clamp(14px, 1.6vw, 20px); letter-spacing: 4px; text-transform: uppercase; }
-.company-industry { font-family: 'Barlow Condensed'; font-size: clamp(12px, 1.2vw, 16px); letter-spacing: 3px; color: rgba(255,255,255,0.38); }
+.act.visible .pain-text { opacity: 1; transform: none; }
+.company-row {
+  display: flex; align-items: center; gap: 14px; margin-top: 28px;
+  opacity: 0; transition: opacity 0.6s 0.9s ease;
+}
+.act.visible .company-row { opacity: 1; }
+.company-bar { width: 28px; height: 1px; flex-shrink: 0; }
+.company-name { font-family: 'Barlow Condensed'; font-weight: 600; font-size: clamp(13px, 1.4vw, 17px); letter-spacing: 4px; text-transform: uppercase; }
+.company-industry { font-family: 'Barlow Condensed'; font-weight: 300; font-size: clamp(11px, 1.1vw, 14px); letter-spacing: 3px; color: rgba(255,255,255,0.3); margin-top: 3px; }
 
-/* ── IMPACT NUMBER ── */
+/* ── ACT II — IMPACT ── */
 .hero-number {
-  font-family: 'Barlow Condensed';
-  font-weight: 900;
-  font-size: clamp(60px, 10vw, 130px);
-  line-height: 0.9;
-  letter-spacing: -2px;
+  font-family: 'Barlow Condensed'; font-weight: 900;
+  font-size: clamp(60px, 11vw, 140px); line-height: 0.88; letter-spacing: -3px;
+  opacity: 0; transform: translateY(32px) scale(0.95);
+  transition: opacity 0.65s 0.2s ease, transform 0.65s 0.2s ease;
 }
+.act.visible .hero-number { opacity: 1; transform: none; }
 .impact-desc {
-  font-family: 'Barlow';
-  font-weight: 300;
-  font-size: clamp(18px, 2.2vw, 30px);
-  line-height: 1.4;
-  color: rgba(255,255,255,0.8);
-  margin-top: 16px;
-  border-left: 3px solid #e63329;
-  padding-left: 20px;
+  font-family: 'Barlow'; font-weight: 300;
+  font-size: clamp(16px, 2vw, 26px); line-height: 1.5; color: rgba(255,255,255,0.55);
+  max-width: 580px; margin-top: 20px; padding-left: 18px;
+  border-left: 2px solid rgba(255,255,255,0.15);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.6s 0.75s ease, transform 0.6s 0.75s ease;
 }
+.act.visible .impact-desc { opacity: 1; transform: none; }
 
-/* ── QUOTE ── */
+/* ── ACT III — QUOTE ── */
+.open-quote {
+  font-family: 'Libre Baskerville'; font-size: 72px; line-height: 0.6;
+  margin-bottom: 12px; opacity: 0;
+  transition: opacity 0.4s 0.1s ease;
+}
+.act.visible .open-quote { opacity: 1; }
 .quote-text {
-  font-family: 'Libre Baskerville';
-  font-style: italic;
-  font-size: clamp(18px, 2.2vw, 32px);
-  line-height: 1.45;
-  color: white;
+  font-family: 'Libre Baskerville'; font-style: italic;
+  font-size: clamp(18px, 2.2vw, 30px); line-height: 1.5; color: white;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.8s 0.3s ease, transform 0.8s 0.3s ease;
 }
-.quote-mark { color: #e63329; font-size: 1.3em; line-height: 0; vertical-align: -0.25em; margin-right: 4px; }
-.quote-person { margin-top: 18px; padding-left: 18px; border-left: 2px solid rgba(91,155,213,0.3); }
-.quote-name { font-family: 'Barlow Condensed'; font-weight: 700; font-size: clamp(14px, 1.6vw, 20px); letter-spacing: 3px; text-transform: uppercase; }
-.quote-role { font-family: 'Barlow'; font-weight: 300; font-size: clamp(12px, 1.2vw, 16px); color: rgba(255,255,255,0.42); margin-top: 4px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.chip { font-family: 'Barlow Condensed'; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border: 1px solid rgba(91,155,213,0.28); color: rgba(91,178,224,0.6); }
+.act.visible .quote-text { opacity: 1; transform: none; }
+.quote-person {
+  margin-top: 28px; padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.15);
+  opacity: 0; transition: opacity 0.5s 1.0s ease;
+}
+.act.visible .quote-person { opacity: 1; }
+.quote-name { font-family: 'Barlow Condensed'; font-weight: 600; font-size: clamp(13px, 1.4vw, 17px); letter-spacing: 3px; text-transform: uppercase; }
+.quote-role { font-family: 'Barlow'; font-weight: 300; font-size: clamp(11px, 1.1vw, 14px); color: rgba(255,255,255,0.35); margin-top: 4px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; opacity: 0; transition: opacity 0.5s 1.3s ease; }
+.act.visible .chips { opacity: 1; }
+.chip {
+  font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 4px 10px; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.03); border-radius: 2px;
+}
 
+/* ── COMPANY NAME PANEL ── */
+.act-hero {
+  opacity: 0; transform: translateX(20px);
+  transition: opacity 0.7s 0.35s ease, transform 0.7s 0.35s ease;
+}
+.act.visible .act-hero { opacity: 1; transform: none; }
+.company-display-name {
+  font-family: 'Barlow Condensed'; font-weight: 900;
+  font-size: clamp(22px, 4.2vw, 64px); line-height: 0.95;
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 14px; display: flex; flex-direction: column; gap: 4px; width: 100%;
+}
+.company-display-name span { display: block; white-space: nowrap; }
+.company-display-name span:nth-child(even) { padding-left: 10px; opacity: 0.7; }
+.company-display-dot { height: 3px; width: 48px; border-radius: 2px; margin-bottom: 12px; }
+.company-display-industry {
+  font-family: 'Barlow Condensed'; font-weight: 300;
+  font-size: clamp(11px, 1.2vw, 16px); letter-spacing: 6px; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ── ACT SIDE DOTS ── */
+.act-dots {
+  position: fixed; right: 20px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 8px; z-index: 20;
+}
+.a-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: all 0.4s ease; }
+.a-dot.done { background: rgba(255,255,255,0.35); }
+.a-dot.active { background: #fff; height: 14px; border-radius: 2px; }
+
+/* ── FOOTER ── */
 .footer-dots { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 300; }
-.dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.18); cursor: pointer; transition: all 0.3s; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.15); cursor: pointer; transition: all 0.3s; }
 .dot.active { background: #e63329; width: 20px; border-radius: 3px; }
+
+/* ── CURTAIN ── */
+#curtain { position: fixed; inset: 0; z-index: 500; background: #0a1032; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
 </style>
 </head>
 <body>
 
+<div id="lightBleed"></div>
+<div id="ghostName"></div>
+<div id="curtain"></div>
 <div class="wave-top"></div>
 <div class="wave-bottom"></div>
 
@@ -217,61 +208,125 @@ header {
 </header>
 
 <div class="stage" id="stage"></div>
+
+<div class="act-dots">
+  <div class="a-dot active" id="ad0"></div>
+  <div class="a-dot" id="ad1"></div>
+  <div class="a-dot" id="ad2"></div>
+</div>
+
 <div class="footer-dots" id="footerDots"></div>
 
 <script>
 const ACT_TIME = 5500;
 const stories = [
-  { company:"Swiggy", industry:"Food Tech", color:"#e63329", components:["QuickML","APIs"], pain:"Attrition was rising with no early-warning system to see it coming. MLOps made deploying sentiment models slow and painfully complex.", number:"Overnight", desc:"Swiggy built an unhappy-employee prediction model overnight with no-code ML deployment and live production data.", quote:"QuickML, with its API capabilities, helped us deploy the model overnight and use production data for interventions.", name:"Daksh Sahni", role:"People Analytics & Behavioural Sciences, Swiggy" },
-  { company:"Saint-Gobain", industry:"Supply Chain", color:"#6ab0e0", components:["Serverless Functions","Event Triggers","APIs"], pain:"Siloed ERP and supply chain systems created blind spots impacting business and customer trust.", number:"1 Week → 1 Day", desc:"Saint-Gobain built serverless supply chain integration in a week and deployed automated workflows for 200+ users.", quote:"We developed the integration in a week and deployed it in a day.", name:"Amanda Tighe", role:"Project Manager, Saint-Gobain" },
-  { company:"Livpure", industry:"E-Commerce", color:"#5cbf9e", components:["Serverless Functions","APIs","Data Store"], pain:"Siloed inventory, logistics, and order data meant customers had zero delivery visibility.", number:"Real-time", desc:"Livpure unified WMS and OMS to show estimated delivery dates by location, displayed in seconds.", quote:"Estimated delivery dates are displayed on the webpage within seconds.", name:"Livpure Team", role:"Livpure" },
-  { company:"BuildHR", industry:"HR Technology", color:"#f5c842", components:["Serverless Functions","Data Store","Authentication"], pain:"HR needed a custom candidate evaluation portal but lacked secure infrastructure to scale.", number:"Global Scale", desc:"Catalyst enabled infrastructure that scaled securely with client growth, holistic and cost-effective.", quote:"Catalyst has been a holistic and cost-effective platform for our development.", name:"Lakshmi Narayan", role:"Executive Director, BuildHR" },
-  { company:"ConstructionBOS", industry:"Construction", color:"#fb923c", components:["Serverless Functions","APIs","Microservices"], pain:"Spreadsheets and manual updates across multi-year projects left teams with stale, unreliable data.", number:"Live Data", desc:"Catalyst microservices synced CRM and third-party project data automatically, no infrastructure management needed.", quote:"Building the microservice on Catalyst was easy! We never had to deal with infrastructure management.", name:"Craig Mulcahy", role:"CEO, ConstructionBOS" },
-  { company:"ProCreator", industry:"Digital Products", color:"#4ecdc4", components:["Serverless Functions","APIs","Application Services"], pain:"Back-end setup slowed website update cycles, blocking designers from shipping fast.", number:"60–70%", desc:"Catalyst powered a dynamic CMS for lightning-fast webpage deployments, slashing development time.", quote:"Development time was reduced by 60–70%, enabling faster delivery of dynamic pages.", name:"ProCreator Team", role:"ProCreator" },
-  { company:"Codafish", industry:"App Development", color:"#e8b96a", components:["Serverless Functions","APIs"], pain:"ERP and CRM were siloed across 95 stores and 400,000 customers with no unified view.", number:"400K+", desc:"Catalyst unified ERP and CRM records across the entire business without worrying about servers.", quote:"Catalyst enables developers to build and scale applications without worrying about servers.", name:"Timo Müller", role:"Executive Director, Codafish" },
-  { company:"Livasa Hospitals", industry:"Healthcare", color:"#f472b6", components:["Serverless Functions","APIs","Authentication"], pain:"Disconnected hospital systems made integrations slow and unstable, delaying critical care workflows.", number:"30%", desc:"Catalyst cut development time by 30% and launched the full platform in under 4 months.", quote:"Catalyst made interoperability seamless and reduced our go-to-market time.", name:"Dishant Gupta", role:"Group Head – IT, Livasa Hospitals" },
-  { company:"Dotsquares", industry:"Enterprise IT", color:"#63b3ed", components:["Serverless Functions","APIs","Data Store"], pain:"Infrastructure provisioning slowed development timelines and blocked automated payment workflows.", number:"70%", desc:"Catalyst powered automated payment workflows, turning a challenge into a growth opportunity.", quote:"Catalyst's flexibility helped turn a challenge into a growth opportunity.", name:"Rahul Gupta", role:"Lead Development Strategist, Dotsquares" }
+  { company:"Swiggy", industry:"Food Tech", color:"#e05c5c", logo:"https://www.zohowebstatic.com/sites/zweb/images/otherbrandlogos/swiggy.svg", components:["QuickML","APIs"], pain:"Attrition was rising with no early-warning system to see it coming. MLOps made deploying sentiment models slow and painfully complex.", number:"Overnight", desc:"Swiggy built an unhappy-employee prediction model overnight — no-code ML deployment with live production data.", quote:"QuickML, with its API capabilities, helped us deploy the model overnight and use production data for interventions.", name:"Daksh Sahni", role:"People Analytics & Behavioural Sciences, Swiggy" },
+  { company:"Saint-Gobain", industry:"Supply Chain", color:"#4a9edd", logo:"https://www.zohowebstatic.com/sites/zweb/images/catalyst/customers/saint-gobain-logo.png", components:["Serverless Functions","Event Triggers","APIs"], pain:"Siloed ERP and supply chain systems created blind spots impacting business and customer trust.", number:"1 Week → 1 Day", desc:"Saint-Gobain built serverless supply chain integration in a week and deployed automated workflows for 200+ users.", quote:"We developed the integration in a week and deployed it in a day.", name:"Amanda Tighe", role:"Project Manager, Saint-Gobain" },
+  { company:"Livpure", industry:"E-Commerce", color:"#5cbf9e", logo:"https://www.zohowebstatic.com/sites/zweb/images/otherbrandlogos/livpure.svg", components:["Serverless Functions","APIs","Data Store"], pain:"Siloed inventory, logistics, and order data meant customers had zero delivery visibility.", number:"Real-time", desc:"Livpure unified WMS and OMS to show estimated delivery dates by location, displayed in seconds.", quote:"Estimated delivery dates are displayed on the webpage within seconds.", name:"Livpure Team", role:"Livpure" },
+  { company:"BuildHR", industry:"HR Technology", color:"#fcd34d", logo:"https://www.zohowebstatic.com/sites/zweb/images/catalyst/customers/buildhr.png", components:["Serverless Functions","Data Store","Authentication"], pain:"HR needed a custom candidate evaluation portal but lacked secure infrastructure to scale.", number:"Global Scale", desc:"Catalyst enabled infrastructure that scaled securely with client growth — holistic and cost-effective.", quote:"Catalyst has been a holistic and cost-effective platform for our development.", name:"Lakshmi Narayan", role:"Executive Director, BuildHR" },
+  { company:"ConstructionBOS", industry:"Construction", color:"#fb923c", logo:"https://www.zohowebstatic.com/sites/zweb/images/otherbrandlogos/constructionbos.png", components:["Serverless Functions","APIs","Microservices"], pain:"Spreadsheets and manual updates across multi-year projects left teams with stale, unreliable data.", number:"Live Data", desc:"Catalyst microservices synced CRM and third-party project data automatically — no infrastructure management needed.", quote:"Building the microservice on Catalyst was easy! We never had to deal with infrastructure management.", name:"Craig Mulcahy", role:"CEO, ConstructionBOS" },
+  { company:"ProCreator", industry:"Digital Products", color:"#4ecdc4", logo:"https://www.zohowebstatic.com/sites/zweb/images/otherbrandlogos/pro-creator.svg", components:["Serverless Functions","APIs","Application Services"], pain:"Back-end setup slowed website update cycles, blocking designers from shipping fast.", number:"60–70%", desc:"Catalyst powered a dynamic CMS for lightning-fast webpage deployments, slashing development time by 60–70%.", quote:"Development time was reduced by 60–70%, enabling faster delivery of dynamic pages.", name:"ProCreator Team", role:"ProCreator" },
+  { company:"Codafish", industry:"App Development", color:"#e8b96a", logo:"https://www.zohowebstatic.com/sites/zweb/images/otherbrandlogos/codafish.png", components:["Serverless Functions","APIs"], pain:"ERP and CRM were siloed across 95 stores and 400,000 customers with no unified view.", number:"400K+", desc:"Catalyst unified ERP and CRM records across the entire business without worrying about servers.", quote:"Catalyst enables developers to build and scale applications without worrying about servers.", name:"Timo Müller", role:"Executive Director, Codafish" },
+  { company:"Livasa Hospitals", industry:"Healthcare", color:"#f472b6", logo:"https://www.zohowebstatic.com/sites/zweb/images/catalyst/customers/zwc-gupta.png", components:["Serverless Functions","APIs","Authentication"], pain:"Disconnected hospital systems made integrations slow and unstable, delaying critical care workflows.", number:"30%", desc:"Catalyst cut development time by 30% and launched the full platform in under 4 months.", quote:"Catalyst made interoperability seamless and reduced our go-to-market time.", name:"Dishant Gupta", role:"Group Head – IT, Livasa Hospitals" },
+  { company:"Dotsquares", industry:"Enterprise IT", color:"#63b3ed", logo:"https://www.zohowebstatic.com/sites/zweb/images/otherbrandlogos/dotsquares-alternative.svg", components:["Serverless Functions","APIs","Data Store"], pain:"Infrastructure provisioning slowed development timelines and blocked automated payment workflows.", number:"70%", desc:"Catalyst powered automated payment workflows — turning a challenge into a growth opportunity.", quote:"Catalyst flexibility helped turn a challenge into a growth opportunity.", name:"Rahul Gupta", role:"Lead Development Strategist, Dotsquares" }
 ];
 
-let si=0,ai=0,timer=null;
-const stage=document.getElementById('stage'),progFill=document.getElementById('progFill'),fd=document.getElementById('footerDots');
-stories.forEach((_,i)=>{ const d=document.createElement('div'); d.className='dot'+(i===0?' active':''); d.onclick=()=>{si=i;ai=0;render();}; fd.appendChild(d); });
+let si=0, ai=0, timer=null;
+
+// Build footer dots
+const fd = document.getElementById('footerDots');
+stories.forEach((_,i)=>{
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===0 ? ' active' : '');
+  d.onclick = ()=>jumpStory(i);
+  fd.appendChild(d);
+});
+
+function setAtmos(s){
+  document.getElementById('lightBleed').style.background =
+    `radial-gradient(ellipse 70% 70% at 85% 50%, ${s.color}18 0%, transparent 65%)`;
+  const g = document.getElementById('ghostName');
+  g.textContent = s.company.split(' ')[0].toUpperCase();
+  g.style.color = s.color;
+}
 
 function render(){
-  const s=stories[si];
-  document.getElementById('sNum').textContent=si+1;
+  const s = stories[si];
+  document.getElementById('sNum').textContent = si+1;
   document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===si));
-  let html='';
-  const words=s.company.split(" ").map(w=>`<span>${w}</span>`).join(""); const co=`<div class="act-hero"><div class="company-display-name" style="color:${s.color}">${words}</div><div class="company-display-dot" style="background:${s.color}"></div><div class="company-display-industry">${s.industry}</div></div>`;
-  if(ai===0){
-    html=`<div class="act visible"><div class="act-content"><div class="act-label label-challenge">Challenge</div><div class="pain-text">${s.pain}</div><div class="company-row"><div class="company-bar" style="background:${s.color}"></div><div class="company-name" style="color:${s.color}">${s.company}</div><div class="company-industry">${s.industry}</div></div></div>${co}</div>`;
-  } else if(ai===1){
-    html=`<div class="act visible"><div class="act-content"><div class="act-label label-impact">Catalyst Impact</div><div class="hero-number" style="color:${s.color}">${s.number}</div><div class="impact-desc">${s.desc}</div></div>${co}</div>`;
-  } else {
-    const chips=s.components.map(c=>`<div class="chip">${c}</div>`).join('');
-    html=`<div class="act visible"><div class="act-content"><div class="act-label label-words">In Their Words</div><div class="quote-text"><span class="quote-mark">"</span>${s.quote}"</div><div class="quote-person"><div class="quote-name" style="color:${s.color}">${s.name}</div><div class="quote-role">${s.role}</div></div><div class="chips">${chips}</div></div>${co}</div>`;
-  }
-  stage.innerHTML=html;
-  fitCompanyName();
-  clearInterval(timer); progFill.style.width='0%';
-  const start=Date.now();
-  timer=setInterval(()=>{ const p=Math.min(100,(Date.now()-start)/ACT_TIME*100); progFill.style.width=p+'%'; if(p>=100){clearInterval(timer);advance();} },40);
-}
-function fitCompanyName(){
-  const el = document.querySelector('.company-display-name');
-  if(!el) return;
-  el.querySelectorAll('span').forEach(span => {
-    let fs = parseFloat(getComputedStyle(el).fontSize);
-    span.style.fontSize = '';
-    while(span.scrollWidth > el.clientWidth && fs > 14){
-      fs -= 1;
-      span.style.fontSize = fs + 'px';
-    }
+  ['ad0','ad1','ad2'].forEach((id,i)=>{
+    const d = document.getElementById(id);
+    if(d) d.className = 'a-dot' + (i<ai?' done': i===ai?' active':'');
   });
+
+  const words = s.company.split(' ').map(w=>`<span>${w}</span>`).join('');
+  const logoHtml = s.logo ? `<img src="${s.logo}" alt="${s.company} logo" style="max-width:120px;max-height:48px;object-fit:contain;margin-bottom:18px;filter:brightness(0) invert(1);opacity:0.85;">` : '';
+  const co = `<div class="act-hero">${logoHtml}<div class="company-display-name" style="color:${s.color}">${words}</div><div class="company-display-dot" style="background:${s.color}"></div><div class="company-display-industry">${s.industry}</div></div>`;
+
+  let html = '';
+  if(ai===0){
+    html = `<div class="act"><div class="act-content"><div class="act-label">The Challenge</div><div class="pain-text">${s.pain}</div><div class="company-row"><div class="company-bar" style="background:${s.color}"></div><div><div class="company-name" style="color:${s.color}">${s.company}</div><div class="company-industry">${s.industry}</div></div></div></div>${co}</div>`;
+  } else if(ai===1){
+    html = `<div class="act"><div class="act-content"><div class="act-label">Catalyst Impact</div><div class="hero-number" style="color:${s.color}">${s.number}</div><div class="impact-desc">${s.desc}</div></div>${co}</div>`;
+  } else {
+    const chips = s.components.map(c=>`<div class="chip">${c}</div>`).join('');
+    html = `<div class="act"><div class="act-content"><div class="act-label">In Their Words</div><div class="open-quote" style="color:${s.color}">"</div><div class="quote-text">${s.quote}</div><div class="quote-person"><div class="quote-name" style="color:${s.color}">${s.name}</div><div class="quote-role">${s.role}</div></div><div class="chips">${chips}</div></div>${co}</div>`;
+  }
+
+  document.getElementById('stage').innerHTML = html;
+  // Fit long company names
+  const nameEl = document.querySelector('.company-display-name');
+  if(nameEl) nameEl.querySelectorAll('span').forEach(span=>{
+    let fs = parseFloat(getComputedStyle(nameEl).fontSize);
+    while(span.scrollWidth > nameEl.clientWidth && fs > 14){ fs--; span.style.fontSize = fs+'px'; }
+  });
+
+  // Trigger animation
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const act = document.querySelector('.act');
+    if(act) act.classList.add('visible');
+  }));
+
+  // Progress bar
+  clearInterval(timer);
+  document.getElementById('progFill').style.width = '0%';
+  const start = Date.now();
+  timer = setInterval(()=>{
+    const p = Math.min(100,(Date.now()-start)/ACT_TIME*100);
+    document.getElementById('progFill').style.width = p+'%';
+    if(p>=100){ clearInterval(timer); advance(); }
+  },40);
 }
-function advance(){ if(ai<2){ai++;}else{ai=0;si=(si+1)%stories.length;} render(); }
-function back(){ if(ai>0){ai--;}else{si=(si-1+stories.length)%stories.length;ai=2;} render(); }
-document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key===' '){clearInterval(timer);advance();} if(e.key==='ArrowLeft'){clearInterval(timer);back();} });
+
+function advance(){
+  if(ai<2){ ai++; render(); }
+  else jumpStory((si+1)%stories.length);
+}
+
+function back(){
+  if(ai>0){ ai--; render(); }
+  else jumpStory((si-1+stories.length)%stories.length);
+}
+
+function jumpStory(idx){
+  const c = document.getElementById('curtain');
+  c.style.opacity = '1'; c.style.pointerEvents = 'auto';
+  clearInterval(timer);
+  setTimeout(()=>{
+    si = idx; ai = 0;
+    setAtmos(stories[idx]);
+    document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+    render();
+    c.style.opacity = '0'; c.style.pointerEvents = 'none';
+  },300);
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){ clearInterval(timer); advance(); }
+  if(e.key==='ArrowLeft'){ clearInterval(timer); back(); }
+});
+
+setAtmos(stories[0]);
 render();
 </script>
 </body>
